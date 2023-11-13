@@ -108,6 +108,21 @@ with col_three:
     '''works like a charm'''
 
 
+
+'''--------'''
+'''## Integrating sheets'''
+from streamlit_gsheets import GSheetsConnection
+
+# Create a connection object.
+conn = st.connection("gsheets", type=GSheetsConnection)
+
+df = conn.read()
+
+# Print results.
+for row in df.itertuples():
+    st.write(f"{row.name} has a :{row.pet}:")
+
+
 '''-----------'''
 '''## Loading Operations [Progress Bar]'''
     
@@ -124,4 +139,4 @@ for i in range(100):
   time.sleep(0.1)
 
 '...and now we\'re done!'\
-    
+
